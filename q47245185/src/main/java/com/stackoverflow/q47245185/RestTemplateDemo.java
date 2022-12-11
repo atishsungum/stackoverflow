@@ -3,7 +3,6 @@ package com.stackoverflow.q47245185;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +38,10 @@ public class RestTemplateDemo {
 
 	@GetMapping("/call-endpoint")
 	public ServiceResponse callEndpoint(){
-		HttpEntity<ServiceResponse> responseHttpEntity = new HttpEntity<>(new ServiceResponse());
-
 		ResponseEntity<ServiceResponse> response = restTemplate.exchange(
 				"http://localhost:8080/get-payload",
 				HttpMethod.GET,
-				responseHttpEntity,
+				null,
 				ServiceResponse.class
 		);
 
